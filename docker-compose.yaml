@@ -2,7 +2,9 @@ version: '3.9'
 
 services:
   app:
-    build: ./Dockerfile-dev
+    build:
+      dockerfile: ./dockerfile-dev
+      context: .
     ports:
       - ${APP_PORT}:${APP_PORT}
     command: sh -c "yarn start"
@@ -19,7 +21,7 @@ services:
       - database
 
 
-  databse:
+  database:
     image: mongo
     restart: always
     environment:
