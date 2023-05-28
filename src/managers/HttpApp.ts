@@ -1,6 +1,6 @@
 import express, { Express, RequestHandler } from "express";
 import { GLOBAL_MIDDLEWARE } from "../app/http/middlewares/globalMiddlewares";
-export default class HttpApp {
+export  class HttpApp {
   private instance: Express;
   constructor() {
     this.instance = express();
@@ -20,3 +20,5 @@ export default class HttpApp {
     }
   }
 }
+
+export default HttpApp

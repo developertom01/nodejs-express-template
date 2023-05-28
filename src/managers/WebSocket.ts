@@ -12,3 +12,4 @@ export class WebSocket {
     return this.instance;
   }
 }
+export default WebSocket

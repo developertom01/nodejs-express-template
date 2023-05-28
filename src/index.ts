@@ -1,13 +1,12 @@
-import { APP_PORT, IsDebugMode } from "./core/env";
-import HttpApp from "./managers/HttpApp";
-import Server from "./managers/Server";
-import { WebSocket } from "./managers/WebSocket";
+import { APP_PORT, IsDebugMode, MONGOOSE_CONNECTION_URI } from "./core/env";
+import { HttpApp, MongooseManager, Server, WebSocket } from "./managers";
 
 async function main() {
+  console.log(MONGOOSE_CONNECTION_URI);
   const httpApp = new HttpApp();
   const server = new Server(httpApp);
   WebSocket.initialize(server);
-
+  await MongooseManager.connect();
   server.app.listen(APP_PORT, () => {
     if (!IsDebugMode) {
       console.log(`App started on http://localhost:${APP_PORT}`);

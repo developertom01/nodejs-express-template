@@ -3,13 +3,13 @@ version: '3.9'
 services:
   app:
     build:
-      dockerfile: ./dockerfile-dev
+      dockerfile: ./Dockerfile-dev
       context: .
     ports:
       - ${APP_PORT}:${APP_PORT}
     command: sh -c "yarn start"
     volumes:
-      - ./src:./src
+      - ./src:/opt/app/src
     environment:
       DATABASE_NAME: ${DATABASE_NAME}
       DATABASE_PORT: ${DATABASE_PORT}
@@ -37,4 +37,4 @@ services:
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME:  ${DATABASE_USER}
       ME_CONFIG_MONGODB_ADMINPASSWORD:  ${DATABASE_PASSWORD}
-      ME_CONFIG_MONGODB_URL: database://${DATABASE_USER}:${DATABASE_PASSWORD}@mongo:${DATABASE_PORT}/
+      ME_CONFIG_MONGODB_URL: mongodb://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/
