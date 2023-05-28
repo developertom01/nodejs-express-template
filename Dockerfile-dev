@@ -1,0 +1,13 @@
+FROM node:18
+
+WORKDIR /opt/app
+
+COPY ./package.json ./package.json
+COPY ./package-lock.json ./package-lock.json
+RUN yarn
+
+COPY ./src ./src
+COPY . .
+
+CMD [ "yarn","start" ]
+
