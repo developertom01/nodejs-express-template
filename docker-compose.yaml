@@ -14,8 +14,11 @@ services:
       DATABASE_NAME: ${DATABASE_NAME}
       DATABASE_PORT: ${DATABASE_PORT}
       DATABASE_USER: ${DATABASE_USER}
+      DATABASE_HOST: ${DATABASE_HOST}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+
       APP_NAME: ${APP_NAME}
+      APP_PORT: ${APP_PORT}
 
     depends_on:
       - database
