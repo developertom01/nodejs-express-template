@@ -10,6 +10,7 @@ services:
     command: sh -c "yarn start"
     volumes:
       - ./src:/opt/app/src
+      - ./node_modules:/opt/app/node_modules
     environment:
       DATABASE_NAME: ${DATABASE_NAME}
       DATABASE_PORT: ${DATABASE_PORT}
