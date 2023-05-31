@@ -11,5 +11,6 @@ describe("IntroController", () => {
     expect(introController.request()).toEqual({
       serverStatus: "server has started",
     });
+    expect(introServiceMock.work).toHaveBeenCalled();
   });
 });
