@@ -24,7 +24,7 @@ export class PasswordManager {
       password,
       saltString
     );
-    return bufferedEncryptedPasswordBuff.toString("hex") + salt;
+    return bufferedEncryptedPasswordBuff.toString("hex") + saltString;
   }
 
   public static async comparePassword(
