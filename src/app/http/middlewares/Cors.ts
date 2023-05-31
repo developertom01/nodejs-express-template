@@ -1,6 +1,6 @@
 //Global
 
-import { Request, Response, NextFunction } from "express";
+import { RequestHandler } from "express";
 import cors, { CorsOptions } from "cors";
 
 const CORS_OPTIONS: CorsOptions = {
@@ -9,11 +9,7 @@ const CORS_OPTIONS: CorsOptions = {
   origin: "*",
 };
 
-export const corsMiddleWare = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const corsMiddleWare: RequestHandler = (...args) => {
   const corsMiddleWareInstance = cors(CORS_OPTIONS);
-  return corsMiddleWareInstance(req, res, next);
+  return corsMiddleWareInstance(...args);
 };
