@@ -1,15 +1,12 @@
 import express, { Express, RequestHandler } from "express";
 import { GLOBAL_MIDDLEWARE } from "../app/http/middlewares/globalMiddlewares";
-import { mainRoutes } from "../app/http/router";
+import mainRoutes from "../app/http/router";
 export class HttpApp {
   private instance: Express;
   constructor() {
     this.instance = express();
     HttpApp.applyGlobalMiddleware(this.instance, GLOBAL_MIDDLEWARE);
     this.app.use(mainRoutes);
-    this.app.use("/", (_, res) => {
-      return res.json({ server_status: "ok" });
-    });
   }
 
   public get app() {
