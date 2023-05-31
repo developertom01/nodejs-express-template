@@ -8,13 +8,14 @@ const config: Config = {
   collectCoverageFrom: [
     "!**/node_modules/**",
     "!**/vendor/**",
-    "!**/tests__/**",
+    "!**/__tests__/**",
   ],
   coverageDirectory: "coverage",
   coverageProvider: "v8",
   globals: {
     NODE_ENV: "test",
   },
+  testPathIgnorePatterns: ["/node_modules/","/src/__tests__/mocks"]
 };
 
 export default config;

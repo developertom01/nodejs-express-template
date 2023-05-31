@@ -1,3 +1,3 @@
-export interface IController {
-  request: (...args: any[]) => any;
+export interface IController<T> {
+  request: (...args: any[]) => T;
 }

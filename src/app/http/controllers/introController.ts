@@ -1,11 +1,10 @@
-import { Request, Response } from "express";
-import { IController, IIntroService } from "../../../ports";
+import { IController, IIntroService, IntroResource } from "../../../ports";
 import { IntroCollection } from "../../schemas/Collections/IntroCollection";
 
-export class IntroController implements IController {
+export class IntroController implements IController<IntroResource> {
   constructor(private readonly introService: IIntroService) {}
-  request(_: Request, res: Response) {
-    const response = new IntroCollection(this.introService.apply());
-    return res.status(200).json(response);
-  }
+  //Use arrow functions to make this keyword refers to class instance not m
+  public request = () => {
+    return new IntroCollection(this.introService.work()).toJSON();
+  };
 }

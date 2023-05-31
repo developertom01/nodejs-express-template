@@ -1,7 +1,7 @@
-import { IIntroService } from "../ports/services/IIntroService";
+import { IIntroService } from "../ports";
 
 export class IntroService implements IIntroService {
-  public apply() {
+  public work() {
     return "Server is running";
   }
 }
