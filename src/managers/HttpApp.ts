@@ -3,12 +3,17 @@ import "express-async-errors";
 import { GLOBAL_MIDDLEWARE } from "../app/http/middlewares/globalMiddlewares";
 import mainRoutes from "../app/http/router";
 import { errorHandlerMiddleware } from "../app/http/middlewares/ErrorHandlerMiddleware";
+import { GraphqlManager } from "./GraphqlManager";
 export class HttpApp {
   private instance: Express;
-  constructor() {
+  constructor(graphqlApp?: GraphqlManager) {
     this.instance = express();
     HttpApp.applyGlobalMiddleware(this.instance, GLOBAL_MIDDLEWARE);
     this.instance.use(mainRoutes);
+
+    if (graphqlApp) {
+      this.instance.use("/graphql", graphqlApp.middleware);
+    }
 
     //Error  handler
     this.instance.use(errorHandlerMiddleware);
